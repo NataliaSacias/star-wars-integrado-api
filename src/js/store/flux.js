@@ -41,6 +41,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
+
+			getDetallePersonajes: async id => {
+				try {
+					const store = getStore();
+					const res = await fetch("https://www.swapi.tech/api/people" + id);
+					const data = await res.json();
+					setStore({
+						detalle: data.results.properties
+					});
+				} catch {}
+			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

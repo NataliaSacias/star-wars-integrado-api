@@ -6,8 +6,39 @@
     
 }
 
-.row {
+.scroll {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+   }
+}
+
+.cardPersonaje{
+     width: 300px;
+    height: 550px;
+}
+
+// estilo del scroll copiado de internt
+.scroll::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.scroll::-webkit-scrollbar:vertical {
+    width:10px;
+}
+.scroll::-webkit-scrollbar-button:increment,.scroll::-webkit-scrollbar-button {
+    display: none;
+} 
+.scroll::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+.scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(177, 125, 241, 0.2);
+    border-radius: 20px;
+    border: 2px solid rebeccapurple;
+}
+.scroll::-webkit-scrollbar-track {
+    border-radius: 10px;  
 }
