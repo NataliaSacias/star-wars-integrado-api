@@ -14,7 +14,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			personajes: [],
-			planetas: []
+			planetas: [],
+			favoritos: [],
+			detalle: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -25,32 +27,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const res = await fetch("https://www.swapi.tech/api/people");
 					const data = await res.json();
-					console.log("async", data);
+					//console.log("async", data);
 
 					setStore({ personajes: data.results });
 				} catch (error) {
-					console.log(error);
+					//console.log(error);
 				}
 
 				try {
 					const res = await fetch("https://www.swapi.tech/api/planets");
 					const data = await res.json();
-					console.log("async", data);
+					//console.log("async", data);
 					setStore({ planetas: data.results });
 				} catch (error) {
-					console.log(error);
+					//console.log(error);
 				}
 			},
 
-			getDetallePersonajes: async id => {
+			getDetallePersonajes: async uid => {
 				try {
 					const store = getStore();
-					const res = await fetch("https://www.swapi.tech/api/people" + id);
+					const res = await fetch("https://www.swapi.tech/api/people/" + uid);
 					const data = await res.json();
 					setStore({
-						detalle: data.results.properties
+						detalle: data.result.properties
 					});
-				} catch {}
+					console.log(data.result.properties);
+				} catch (error) {}
+			},
+
+			agregarFavorito: nuevoFavorito => {
+				const store = getStore();
+				let newArryFavorite = [...store.favoritos, nuevoFavorito];
+				setStore({ favoritos: newArryFavorite });
+			},
+
+			eliminarFavorito: indice => {
+				const store = getStore();
+				let noEliminados = store.favoritos.filter((fav, index) => {
+					if (indice != index) return fav;
+				});
+				setStore({ favoritos: noEliminados });
 			},
 
 			changeColor: (index, color) => {
