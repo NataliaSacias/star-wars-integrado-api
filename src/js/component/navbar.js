@@ -8,7 +8,7 @@ export const Navbar = () => {
 
 	return (
 		<div className="p-5">
-			<nav className="navbar navbar-light bg-light mb-3 navbar-default fixed-top">
+			<nav className="navbar mb-2 navbar-default fixed-top navbar-light bg-light">
 				{/* <div className="container"> */}
 				<Link to="/">
 					<img
