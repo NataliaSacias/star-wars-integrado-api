@@ -4,7 +4,8 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
-import { Detalle } from "./views/detalle";
+import { VistaDetallePersonajes } from "./views/vistaDetallePersonajes";
+import { VistaDetallePlanetas } from "./views/vistaDetallePlanetas";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -28,8 +29,11 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
-						<Route exact path="/detalle/:uid">
-							<Detalle />
+						<Route exact path="/detallePersonajes/:uid">
+							<VistaDetallePersonajes />
+						</Route>
+						<Route exact path="/detallePlanetas/:uid">
+							<VistaDetallePlanetas />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
